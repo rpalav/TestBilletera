@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilleteraAPI.Domain", "BilleteraAPI.Domain\BilleteraAPI.Domain.csproj", "{6D023015-172C-488B-960B-1ECE856FEE38}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilleteraAPI.Infrastructure", "BilleteraAPI.Infrastructure\BilleteraAPI.Infrastructure.csproj", "{9B5A435C-4AED-408A-9648-14313E95E3B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilleteraAPI.WebApi", "BilleteraAPI.WebApi\BilleteraAPI.WebApi.csproj", "{0D644F85-37BE-4AA7-A1F4-13C354344E28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilleteraAPI.UnitTests", "BilleteraAPI.UnitTests\BilleteraAPI.UnitTests.csproj", "{EABB1CAF-7B52-CC5F-A0AD-5AB365D0D968}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilleteraAPI.IntegrationTests", "BilleteraAPI.IntegrationTests\BilleteraAPI.IntegrationTests.csproj", "{B7D9ED15-E660-473C-5DE5-79F36F390743}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0D644F85-37BE-4AA7-A1F4-13C354344E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D644F85-37BE-4AA7-A1F4-13C354344E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D644F85-37BE-4AA7-A1F4-13C354344E28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABB1CAF-7B52-CC5F-A0AD-5AB365D0D968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABB1CAF-7B52-CC5F-A0AD-5AB365D0D968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABB1CAF-7B52-CC5F-A0AD-5AB365D0D968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABB1CAF-7B52-CC5F-A0AD-5AB365D0D968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D9ED15-E660-473C-5DE5-79F36F390743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D9ED15-E660-473C-5DE5-79F36F390743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D9ED15-E660-473C-5DE5-79F36F390743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D9ED15-E660-473C-5DE5-79F36F390743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
