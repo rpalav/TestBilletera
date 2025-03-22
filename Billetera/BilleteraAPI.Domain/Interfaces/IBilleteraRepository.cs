@@ -13,6 +13,6 @@ namespace BilleteraAPI.Domain.Interfaces
         Task<BilleteraEntity> GetBilleteraByIdAsync(int id);
         Task<BilleteraEntity> AddBilleteraAsync(BilleteraEntity entity);
         Task<BilleteraEntity> UpdateBilleteraAsync(int idBilletera, BilleteraEntity entity);
-        Task<bool> DeleteBilleteraAsync(int idBilletera, BilleteraEntity entity);
+        Task<bool> DeleteBilleteraAsync(int idBilletera);
     }
 }

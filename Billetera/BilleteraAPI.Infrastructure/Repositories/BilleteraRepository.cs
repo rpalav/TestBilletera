@@ -43,7 +43,7 @@ namespace BilleteraAPI.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task<bool> DeleteBilleteraAsync(int idBilletera, BilleteraEntity entity)
+        public async Task<bool> DeleteBilleteraAsync(int idBilletera)
         {
             var billetera = await dbContext.Billeteras.FirstOrDefaultAsync(x => x.Id.Equals(idBilletera));
             if (billetera is not null)

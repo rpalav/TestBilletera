@@ -25,5 +25,27 @@ namespace BilleteraAPI.WebApi.Controllers
             var result = await sender.Send(new GetAllBilleteraQuery());
             return Ok(result);
         }
+
+        [HttpGet("Billeteras/{idBilletera}")]
+        public async Task<IActionResult> GetBilleteraByIdAsync([FromRoute] int idBilletera)
+        {
+            var result = await sender.Send(new GetAllBilleteraByIdQuery(idBilletera));
+            return Ok(result);
+        }
+
+        [HttpPut("Billeteras/{idBilletera}")]
+        public async Task<IActionResult> UpdateBilleteraAsync([FromRoute] int idBilletera, [FromBody] BilleteraDto billetera)
+        {
+            var result = await sender.Send(new UpdateBilleteraCommand(idBilletera, billetera));
+            return Ok(result);
+        }
+
+
+        [HttpDelete("Billeteras/{idBilletera}")]
+        public async Task<IActionResult> DeleteBilleteraAsync([FromRoute] int idBilletera)
+        {
+            var result = await sender.Send(new DeleteBilleteraCommand(idBilletera));
+            return Ok(result);
+        }
     }
 }
