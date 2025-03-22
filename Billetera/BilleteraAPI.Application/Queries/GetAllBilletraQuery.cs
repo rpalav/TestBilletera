@@ -1,14 +1,7 @@
 ﻿using AutoMapper;
 using BilleteraAPI.Application.Dtos;
-using BilleteraAPI.Domain.Entities;
 using BilleteraAPI.Domain.Interfaces;
-using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BilleteraAPI.Application.Queries
 {

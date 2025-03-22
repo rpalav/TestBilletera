@@ -1,7 +1,5 @@
-﻿using BilleteraAPI.Application.Commands;
-using BilleteraAPI.Application.Dtos;
+﻿using BilleteraAPI.Application.Dtos;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static BilleteraAPI.Application.Commands.TransferenciaBilleteraCommand;
 

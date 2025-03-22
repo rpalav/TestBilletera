@@ -1,9 +1,7 @@
 ﻿using BilleteraAPI.Application.Commands;
 using BilleteraAPI.Application.Dtos;
 using BilleteraAPI.Application.Queries;
-using BilleteraAPI.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BilleteraAPI.WebApi.Controllers

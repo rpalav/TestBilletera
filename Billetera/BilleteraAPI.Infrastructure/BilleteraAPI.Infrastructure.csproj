@@ -19,8 +19,4 @@
     <ProjectReference Include="..\BilleteraAPI.Application\BilleteraAPI.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
 </Project>

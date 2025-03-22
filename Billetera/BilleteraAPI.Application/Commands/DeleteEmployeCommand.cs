@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using BilleteraAPI.Application.Constantes;
-using BilleteraAPI.Application.Dtos;
+﻿using BilleteraAPI.Application.Constantes;
 using BilleteraAPI.Application.Exceptions;
-using BilleteraAPI.Domain.Entities;
 using BilleteraAPI.Domain.Interfaces;
-using FluentValidation;
 using MediatR;
 
 namespace BilleteraAPI.Application.Commands
