@@ -1,4 +1,6 @@
-﻿using BilleteraAPI.Infrastructure.Data;
+﻿using BilleteraAPI.Domain.Interfaces;
+using BilleteraAPI.Infrastructure.Data;
+using BilleteraAPI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +15,8 @@ namespace BilleteraAPI.Infrastructure
             {
                 options.UseSqlServer("");
             });
+
+            services.AddScoped<IBilleteraRepository, BilleteraRepository>();
             return services;
         }
     }

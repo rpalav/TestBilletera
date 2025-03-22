@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BilleteraAPI.Application\BilleteraAPI.Application.csproj" />
     <ProjectReference Include="..\BilleteraAPI.Infrastructure\BilleteraAPI.Infrastructure.csproj" />
   </ItemGroup>
