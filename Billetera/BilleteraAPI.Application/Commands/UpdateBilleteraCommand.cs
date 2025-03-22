@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BilleteraAPI.Application.Constantes;
 using BilleteraAPI.Application.Dtos;
+using BilleteraAPI.Application.Exceptions;
 using BilleteraAPI.Domain.Entities;
 using BilleteraAPI.Domain.Interfaces;
 using FluentValidation;
@@ -35,8 +37,13 @@ namespace BilleteraAPI.Application.Commands
             }
 
             var billeteraEntity = _mapper.Map<BilleteraEntity>(request.Billetera);
-
             billeteraEntity.UpdatedAt = DateTime.UtcNow;
+
+            var billetera = await _unitOfWork.Billeteras.GetBilleteraByIdAsync(request.Billetera.Id);
+            if (billetera is null)
+            {
+                throw new ExcepcionNegocio(ErroresNegocio.Billetera.MensajeNoEncontrada, ErroresNegocio.Billetera.CodigoNoEncontrada);
+            }
 
             var result = await _unitOfWork.Billeteras.UpdateBilleteraAsync(request.idBilletera, billeteraEntity);
             await _unitOfWork.CompleteAsync();

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BilleteraAPI.Application.Constantes;
 using BilleteraAPI.Application.Dtos;
+using BilleteraAPI.Application.Exceptions;
 using BilleteraAPI.Domain.Interfaces;
 using MediatR;
 
@@ -22,6 +24,12 @@ namespace BilleteraAPI.Application.Queries
 
         public async Task<BilleteraDto> Handle(GetAllBilleteraByIdQuery request, CancellationToken cancellationToken)
         {
+            var billetera = await _billeteraRepository.GetBilleteraByIdAsync(request.idBilletera);
+            if (billetera is null)
+            {
+                throw new ExcepcionNegocio(ErroresNegocio.Billetera.MensajeNoEncontrada, ErroresNegocio.Billetera.CodigoNoEncontrada);
+            }
+
             var billeteras = await _billeteraRepository.GetBilleteraByIdAsync(request.idBilletera);
             return _mapper.Map<BilleteraDto>(billeteras);
         }

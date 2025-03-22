@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using BilleteraAPI.Application.Exceptions;
+using FluentValidation;
 using System.Net;
 using System.Text.Json;
 
@@ -28,6 +29,19 @@ namespace BilleteraAPI.WebApi.Middleware
                 {
                     message = "Validation errors occurred.",
                     errors = ex.Errors
+                };
+
+                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+            }
+            catch (ExcepcionNegocio ex)
+            {
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+                var response = new
+                {
+                    message = ex.Message,
+                    codigoError = ex.CodigoError
                 };
 
                 await context.Response.WriteAsync(JsonSerializer.Serialize(response));

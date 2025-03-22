@@ -29,9 +29,17 @@ namespace BilleteraAPI.Infrastructure.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<HistorialMovimientoEntity>()
-                .Property(h => h.Id)
-                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<HistorialMovimientoEntity>(entity =>
+            {
+                entity.HasKey(m => m.Id);
+                entity.Property(m => m.Id).ValueGeneratedOnAdd();
+                entity.Property(m => m.WalletId).IsRequired();
+                entity.Property(m => m.Amount).HasColumnType("decimal(18, 2)");
+                entity.Property(m => m.Type)
+                    .HasConversion<string>()
+                    .IsRequired();
+                entity.Property(m => m.CreatedAt).IsRequired();
+            });
 
             modelBuilder.Entity<HistorialMovimientoEntity>()
                 .HasOne(h => h.Wallet)
