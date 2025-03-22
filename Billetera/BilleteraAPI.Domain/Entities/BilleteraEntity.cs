@@ -15,6 +15,7 @@ namespace BilleteraAPI.Domain.Entities
         public decimal Balance { get; set; }
         public DateTime CreatedAt  { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public ICollection<HistorialMovimientoEntity> Movimientos { get; set; } = new List<HistorialMovimientoEntity>();
 
 
     }

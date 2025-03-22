@@ -1,4 +1,6 @@
-﻿using BilleteraAPI.Domain.Entities;
+﻿using AutoMapper;
+using BilleteraAPI.Application.Dtos;
+using BilleteraAPI.Domain.Entities;
 using BilleteraAPI.Domain.Interfaces;
 using MediatR;
 using System;
@@ -9,14 +11,27 @@ using System.Threading.Tasks;
 
 namespace BilleteraAPI.Application.Commands
 {
-    public record AddBilleteraCommand(BilleteraEntity Billetera): IRequest<BilleteraEntity>;
+    public record AddBilleteraCommand(BilleteraDto Billetera) : IRequest<BilleteraEntity>;
 
-    public class AddBilleteraCommandHandler(IBilleteraRepository billeteraRepository)
-        : IRequestHandler<AddBilleteraCommand, BilleteraEntity>
+    public class AddBilleteraCommandHandler : IRequestHandler<AddBilleteraCommand, BilleteraEntity>
     {
+        private readonly IBilleteraRepository _billeteraRepository;
+        private readonly IMapper _mapper;
+
+        public AddBilleteraCommandHandler(IBilleteraRepository billeteraRepository, IMapper mapper)
+        {
+            _billeteraRepository = billeteraRepository;
+            _mapper = mapper;
+        }
+
         public async Task<BilleteraEntity> Handle(AddBilleteraCommand request, CancellationToken cancellationToken)
         {
-            return await billeteraRepository.AddBilleteraAsync(request.Billetera)
+            var billeteraEntity = _mapper.Map<BilleteraEntity>(request.Billetera);
+
+            billeteraEntity.CreatedAt = DateTime.UtcNow;
+            billeteraEntity.UpdatedAt = DateTime.UtcNow;
+
+            return await _billeteraRepository.AddBilleteraAsync(billeteraEntity);
         }
     }
 }

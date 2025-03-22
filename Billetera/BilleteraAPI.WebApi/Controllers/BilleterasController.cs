@@ -1,4 +1,5 @@
 ﻿using BilleteraAPI.Application.Commands;
+using BilleteraAPI.Application.Dtos;
 using BilleteraAPI.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ namespace BilleteraAPI.WebApi.Controllers
     public class BilleterasController(ISender sender) : ControllerBase
     {
         [HttpPost("")]
-        public async Task<IActionResult> AddBilleteraAsync([FromBody] BilleteraEntity billetera) 
+        public async Task<IActionResult> AddBilleteraAsync([FromBody] BilleteraDto billetera) 
         {
             var result = await sender.Send(new AddBilleteraCommand(billetera));
             return Ok(result);

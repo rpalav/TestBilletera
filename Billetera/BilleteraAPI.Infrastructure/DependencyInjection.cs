@@ -13,7 +13,7 @@ namespace BilleteraAPI.Infrastructure
         {
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer("");
+                options.UseSqlServer("Server=DESKTOP-SVJJE3M\\SQLEXPRESS;Database=Wallet;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
             });
 
             services.AddScoped<IBilleteraRepository, BilleteraRepository>();

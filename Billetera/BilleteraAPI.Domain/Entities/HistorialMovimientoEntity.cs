@@ -9,5 +9,6 @@ namespace BilleteraAPI.Domain.Entities
         public decimal Amount { get; set; }
         public string Type { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
+        public BilleteraEntity Wallet { get; set; } = null!;
     }
 }
