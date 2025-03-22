@@ -1,8 +1,11 @@
 ﻿using BilleteraAPI.Domain.Interfaces;
+using BilleteraAPI.Domain.Options;
 using BilleteraAPI.Infrastructure.Data;
 using BilleteraAPI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 
 namespace BilleteraAPI.Infrastructure
@@ -11,9 +14,9 @@ namespace BilleteraAPI.Infrastructure
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<AppDbContext>((provider, options) =>
             {
-                options.UseSqlServer("Server=DESKTOP-SVJJE3M\\SQLEXPRESS;Database=Wallet;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+                options.UseSqlServer(provider.GetRequiredService<IOptionsSnapshot<ConnectionStringOptions>>().Value.DefaultConnection);
             });
 
             services.AddScoped<IBilleteraRepository, BilleteraRepository>();
