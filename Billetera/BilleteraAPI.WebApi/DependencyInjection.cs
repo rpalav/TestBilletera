@@ -1,5 +1,8 @@
 ﻿using BilleteraAPI.Application;
+using BilleteraAPI.Application.Validators;
 using BilleteraAPI.Infrastructure;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace BilleteraAPI.WebApi
 {
@@ -10,6 +13,9 @@ namespace BilleteraAPI.WebApi
 
             services.AddApplicationDI()
                 .AddInfrastructureDI();
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(typeof(BilleteraValidator).Assembly);
             return services;
         }
     }
