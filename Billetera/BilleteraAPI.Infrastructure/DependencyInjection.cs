@@ -3,7 +3,6 @@ using BilleteraAPI.Domain.Options;
 using BilleteraAPI.Infrastructure.Data;
 using BilleteraAPI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -20,6 +19,8 @@ namespace BilleteraAPI.Infrastructure
             });
 
             services.AddScoped<IBilleteraRepository, BilleteraRepository>();
+            services.AddScoped<IHistorialMovimientoRepository, HistorialMovimientoRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

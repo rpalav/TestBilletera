@@ -11,17 +11,17 @@ namespace BilleteraAPI.Application.Commands
 
     public class UpdateBilleteraCommandHandler : IRequestHandler<UpdateBilleteraCommand, BilleteraEntity>
     {
-        private readonly IBilleteraRepository _billeteraRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IValidator<BilleteraDto> _validator;
 
 
         public UpdateBilleteraCommandHandler(
-            IBilleteraRepository billeteraRepository,
+            IUnitOfWork unitOfWork,
             IMapper mapper,
             IValidator<BilleteraDto> validator)
         {
-            _billeteraRepository = billeteraRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _validator = validator;
         }
@@ -38,7 +38,9 @@ namespace BilleteraAPI.Application.Commands
 
             billeteraEntity.UpdatedAt = DateTime.UtcNow;
 
-            return await _billeteraRepository.UpdateBilleteraAsync(request.idBilletera, billeteraEntity);
+            var result = await _unitOfWork.Billeteras.UpdateBilleteraAsync(request.idBilletera, billeteraEntity);
+            await _unitOfWork.CompleteAsync();
+            return result;
         }
     }
 

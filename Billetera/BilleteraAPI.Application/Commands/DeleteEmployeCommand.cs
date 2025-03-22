@@ -11,24 +11,19 @@ namespace BilleteraAPI.Application.Commands
 
     public class DeleteBilleteraCommandHandler : IRequestHandler<DeleteBilleteraCommand, bool>
     {
-        private readonly IBilleteraRepository _billeteraRepository;
-        private readonly IMapper _mapper;
-        private readonly IValidator<BilleteraDto> _validator;
-
+        private readonly IUnitOfWork _unitOfWork;
 
         public DeleteBilleteraCommandHandler(
-            IBilleteraRepository billeteraRepository,
-            IMapper mapper,
-            IValidator<BilleteraDto> validator)
+            IUnitOfWork unitOfWork)
         {
-            _billeteraRepository = billeteraRepository;
-            _mapper = mapper;
-            _validator = validator;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> Handle(DeleteBilleteraCommand request, CancellationToken cancellationToken)
-        {         
-            return await _billeteraRepository.DeleteBilleteraAsync(request.idBilletera);
+        {
+            var result = await _unitOfWork.Billeteras.DeleteBilleteraAsync(request.idBilletera);
+            await _unitOfWork.CompleteAsync();
+            return result;
         }
     }
 }

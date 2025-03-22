@@ -25,7 +25,6 @@ namespace BilleteraAPI.Infrastructure.Repositories
         public async Task<BilleteraEntity> AddBilleteraAsync(BilleteraEntity entity)
         {
             dbContext.Billeteras.Add(entity);
-            await dbContext.SaveChangesAsync();
             return entity;
         }
 
@@ -36,7 +35,6 @@ namespace BilleteraAPI.Infrastructure.Repositories
             {
                 billetera.Name = entity.Name;
                 billetera.Balance = entity.Balance;
-                await dbContext.SaveChangesAsync();
                 return billetera;
             }
 
@@ -49,7 +47,7 @@ namespace BilleteraAPI.Infrastructure.Repositories
             if (billetera is not null)
             {
                 dbContext.Billeteras.Remove(billetera);                
-                return await dbContext.SaveChangesAsync() > 0;
+                return true;
             }
 
             return false;
